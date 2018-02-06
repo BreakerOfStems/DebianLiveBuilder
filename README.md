@@ -23,6 +23,11 @@ akin to a regular Debian environment, if you are not familiar with the concept.
 You MUST install live-boot, systemd-sysv and a linux kernel.  To find this
 use "apt-cache search linux-image" in the "chroot" phase.
 
+Requirements:
+
+The following packages are required; debootstrap syslinux isolinux squashfs-tools genisoimage memtest86+ rsync
+However, the script does attempt to install them for you.
+
 Usage:
 
 sudo bash dlbuilder.sh
