@@ -10,6 +10,8 @@ https://willhaley.com/blog/create-a-custom-debian-stretch-live-environment-ubunt
 This is a perfect guide to the topic, and should be read to help understand what 
 is happening in this script.
 
+Description:
+
 All the steps for making a Debian Live ISO combined into an easy to use script.  
 You must use this in a Debian environment, as the tools are exclusive 
 (to my knowledge). The script requires admin priviliges for some steps.
