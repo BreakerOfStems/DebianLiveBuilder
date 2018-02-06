@@ -35,7 +35,7 @@ if [ $phase == "0" ];
 		debootstrap --arch=$arch --variant=minbase $version $HOME/DebianCustomISO/$name/chroot/ http://ftp.us.debian.org/debian/
 fi
 
-if [ -d $HOME/DebianCustomISO/$name/$name.setup ];
+if [ -d "$HOME/DebianCustomISO/$name/$name.setup" ];
 	then
 		cp -v $HOME/DebianCustomISO/$name/$name.setup $HOME/DebianCustomISO/$name/chroot/$name.sh
 fi
@@ -52,6 +52,11 @@ Suggested steps:
 Once done use 'exit' to exit the chroot environment and
 continue building the image."
 chroot $HOME/DebianCustomISO/$name/chroot/
+
+if [ -d "$HOME/DebianCustomISO/$name/chroot/$name.sh" ];
+	then
+		rm $HOME/DebianCustomISO/$name/chroot/$name.sh
+fi
 
 read -p "Do you want to create iso image now? y/n: "
 if [ $REPLY == 'y' ];

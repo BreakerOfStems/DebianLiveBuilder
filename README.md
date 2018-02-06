@@ -38,6 +38,6 @@ su
 bash dlbuilder.sh
 
 NOTE: If a bash script of desired commands at $HOME/DebianLiveBuild/[project name]/[project name].setup is present,
-it will be copied into $HOME/DebianCustomISO/[project name]/chroot.  From here you can run bash [project name].sh, 
-this can be handy for instances where you need to create your desired build from scratch or share the build process
-with others.
+it will be copied into $HOME/DebianCustomISO/[project name]/chroot.  From here you can run bash [project name].sh
+to run all the commands you desire.  This can be handy for instances where you need to create your desired build
+from scratch.
