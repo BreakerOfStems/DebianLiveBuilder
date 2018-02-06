@@ -13,7 +13,7 @@ phase="0"
 if [ -d "$HOME/DebianCustomISO/$name" ]; 
 	then
 		read -p "Project exists, do you wish to edit chroot and rebuild? y/n: "
-		if [ $REPLY != 'y' ]; 
+		if [ $REPLY == 'y' ]; 
 			then
 				phase="1"
 		fi
@@ -28,7 +28,7 @@ if [ $phase == "0" ];
 		
 		echo "Creating project folders."
 		rm -r $HOME/DebianCustomISO/$name > /dev/null
-		mkdir -pv $HOME/DebianCustomISO/$name/chroot/
+		mkdir -pv $HOME/DebianCustomISO/$name/chroot/		
 		mkdir -pv $HOME/DebianCustomISO/$name/image/{live,isolinux}
 		
 		echo "Generating file system."
@@ -53,11 +53,12 @@ read -p "Do you want to create iso image now? y/n: "
 if [ $REPLY == 'y' ];
 	then
 		echo "Creating squashfs."
+		rm -r $HOME/DebianCustomISO/$name/image/live/filesystem.squashfs
 		mksquashfs $HOME/DebianCustomISO/$name/chroot/ $HOME/DebianCustomISO/$name/image/live/filesystem.squashfs -e boot
 		
 		echo "Copying necessary files."
-		cp $HOME/DebianCustomISO/$name/chroot/boot/vmlinuz-4.9.0-3-686 $HOME/DebianCustomISO/$name/image/live/vmlinuz1
-		cp $HOME/DebianCustomISO/$name/chroot/boot/initrd.img-4.9.0-3-686 $HOME/DebianCustomISO/$name/image/live/initrd1
+		cp $HOME/DebianCustomISO/$name/chroot/boot/vmlinuz-* $HOME/DebianCustomISO/$name/image/live/vmlinuz1
+		cp $HOME/DebianCustomISO/$name/chroot/boot/initrd.img-* $HOME/DebianCustomISO/$name/image/live/initrd1
 		
 		echo "UI menu.c32
 
@@ -95,7 +96,7 @@ if [ $REPLY == 'y' ];
 		cp /boot/memtest86+.bin $HOME/DebianCustomISO/$name/image/live/memtest
 		
 		echo "Generating iso image..."
-		genisoimage -rational-rock -volid $name -cache-inodes -joliet -hfs -full-iso9660-filenames -b $HOME/DebianCustomISO/$name/image/isolinux/isolinux.bin -c $HOME/DebianCustomISO/$name/image/isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -output $HOME/DebianCustomISO/$name/$name.iso $HOME/DebianCustomISO/$name/image/
+		genisoimage -rational-rock -volid $name -cache-inodes -joliet -hfs -full-iso9660-filenames -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -output $HOME/DebianCustomISO/$name/$name.iso $HOME/DebianCustomISO/$name/image/
 		
 		echo "Finished. You can find your iso at $HOME/DebianCustomISO/$name/$name.iso"		
 fi
