@@ -1,0 +1,3 @@
+echo example > /etc/hostname
+apt update;apt install live-boot systemd-sysv linux-image-amd64
+passwd
