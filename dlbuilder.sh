@@ -35,6 +35,10 @@ if [ $phase == "0" ];
 		debootstrap --arch=$arch --variant=minbase $version $HOME/DebianCustomISO/$name/chroot/ http://ftp.us.debian.org/debian/
 fi
 
+if [ -d $HOME/DebianCustomISO/$name/$name.setup ];
+	then
+		cp -v $HOME/DebianCustomISO/$name/$name.setup $HOME/DebianCustomISO/$name/chroot/$name.sh
+fi
 echo "Entering chroot environment.
 If running a gui, you can use another terminal to
 copy files and folders into the chroot environment.
