@@ -39,7 +39,7 @@ if [ -f "$HOME/DebianCustomISO/$name/$name.setup" ];
 	then
 		cp -v $HOME/DebianCustomISO/$name/$name.setup $HOME/DebianCustomISO/$name/chroot/$name.sh
 fi
-
+cp -rv /etc/skel/* $HOME/DebianCustomISO/$name/chroot/etc/skel/
 echo "Entering chroot environment.
 If running a gui, you can use another terminal to
 copy files and folders into the chroot environment.
