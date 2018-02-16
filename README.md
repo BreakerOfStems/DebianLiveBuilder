@@ -34,8 +34,7 @@ sudo bash dlbuilder.sh
 
 or
 
-su
-bash dlbuilder.sh
+su -c "bash dlbuilder.sh"
 
 NOTE: If a bash script of desired commands at $HOME/DebianLiveBuild/[project name]/[project name].setup is present,
 it will be copied into $HOME/DebianCustomISO/[project name]/chroot.  From here you can run bash [project name].sh
